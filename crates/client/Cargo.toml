@@ -1,0 +1,21 @@
+[package]
+name = "sideroute-client"
+description = "sideroute Linux client: move running apps into a WireGuard tunnel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "sideroute"
+path = "src/main.rs"
+
+[[bin]]
+name = "sideroute-helper"
+path = "src/helper.rs"
+
+[dependencies]
+sideroute-proto.workspace = true
+sideroute-net.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+zbus = { version = "5", default-features = false, features = ["async-io"] }

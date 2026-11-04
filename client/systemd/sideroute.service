@@ -1,0 +1,8 @@
+[Unit]
+Description=sideroute: moves apps into the WireGuard tunnel on request (io.github.attaberuku.Sideroute)
+
+[Service]
+Type=dbus
+BusName=io.github.attaberuku.Sideroute
+ExecStart=/usr/local/bin/sideroute daemon
+Restart=on-failure

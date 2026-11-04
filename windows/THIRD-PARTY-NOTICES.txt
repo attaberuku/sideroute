@@ -1,0 +1,18 @@
+Sideroute for Windows bundles or installs these third-party components:
+
+wireguard.dll (wireguard-nt 1.1)
+  WireGuard LLC, https://git.zx2c4.com/wireguard-nt/about/
+  Distributed unmodified under the "Prebuilt Binaries License" (wireguard-nt-LICENSE.txt in this
+  folder); Sideroute uses it only through the API in wireguard.h.
+
+ProxiFyre 2.6.4
+  https://github.com/wiresock/proxifyre
+  License: GNU Affero General Public License v3.0. ProxiFyre is a separate program; its
+  installer is bundled unmodified. Corresponding source code:
+  https://github.com/wiresock/proxifyre/tree/v2.6.4
+
+Windows Packet Filter (installed by the ProxiFyre setup)
+  https://github.com/wiresock/ndisapi  License: MIT
+
+Microsoft Visual C++ Redistributable (installed by the ProxiFyre setup)
+  Microsoft Software License Terms

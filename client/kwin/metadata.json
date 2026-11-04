@@ -1,0 +1,15 @@
+{
+    "KPlugin": {
+        "Id": "sideroute",
+        "Name": "Sideroute",
+        "Description": "Moves the app of a window into the Sideroute VPN (or back) without restarting it: window menu (Alt+F3) or Meta+Alt+V.",
+        "Authors": [{ "Name": "Sideroute contributors" }],
+        "Version": "0.1.0",
+        "License": "MIT OR Apache-2.0",
+        "Icon": "network-vpn",
+        "Website": "https://github.com/attaberuku/sideroute"
+    },
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js",
+    "KPackageStructure": "KWin/Script"
+}

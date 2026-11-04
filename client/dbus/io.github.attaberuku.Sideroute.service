@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=io.github.attaberuku.Sideroute
+Exec=/usr/local/bin/sideroute daemon
+SystemdService=sideroute.service

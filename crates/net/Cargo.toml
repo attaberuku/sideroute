@@ -1,0 +1,14 @@
+[package]
+name = "sideroute-net"
+description = "Client-side pairing and Cloudflare WARP registration (shared by the Linux and Windows clients)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+sideroute-proto.workspace = true
+serde_json.workspace = true
+rustls.workspace = true
+webpki-roots = "1"
+x25519-dalek = { version = "2", features = ["static_secrets"] }
+base64.workspace = true

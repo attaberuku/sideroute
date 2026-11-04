@@ -1,0 +1,17 @@
+[package]
+name = "sideroute-server"
+description = "sideroute VPS side: WireGuard setup and the pairing service"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "sideroute-server"
+path = "src/main.rs"
+
+[dependencies]
+sideroute-proto.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+rustls.workspace = true
+rcgen = { version = "0.14", default-features = false, features = ["crypto", "ring"] }

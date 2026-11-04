@@ -1,0 +1,6 @@
+[Unit]
+Description=sideroute: keeps app-sideroute.slice alive
+
+[Service]
+Slice=app-sideroute.slice
+ExecStart=/usr/bin/sleep infinity

@@ -1,0 +1,56 @@
+name: release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  build:
+    strategy:
+      matrix:
+        target: [x86_64-unknown-linux-musl, aarch64-unknown-linux-musl]
+    runs-on: ubuntu-24.04
+    env:
+      SIDEROUTE_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - run: cargo install cross --locked
+      - run: CARGO=cross scripts/package.sh ${{ matrix.target }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.target }}
+          path: |
+            dist/sideroute-server-*
+            dist/sideroute-linux-*.tar.gz
+  windows:
+    runs-on: windows-2022
+    env:
+      SIDEROUTE_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+      - shell: bash
+        # cygpath: the build script needs a Windows path, not Git Bash's /d/a/...
+        run: echo "SIDEROUTE_PAYLOAD_DIR=$(cygpath -w "$(scripts/fetch-windows-payload.sh "$PWD/target/payload" | tail -1)")" >> "$GITHUB_ENV"
+      - run: cargo build --release --locked -p sideroute-windows
+      - shell: bash
+        run: mkdir -p dist && cp target/release/Sideroute.exe dist/SiderouteSetup.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist-windows
+          path: dist/SiderouteSetup.exe
+  publish:
+    needs: [build, windows]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - run: cd dist && sha256sum sideroute-server-*-linux-musl sideroute-linux-*.tar.gz SiderouteSetup.exe > SHA256SUMS
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*

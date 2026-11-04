@@ -1,0 +1,35 @@
+// Resources of Sideroute.exe: icons, manifest and version information.
+#pragma code_page(65001)
+
+1 ICON "assets/app.ico"
+2 ICON "assets/tray-off.ico"
+3 ICON "assets/tray-on.ico"
+4 ICON "assets/tray-warn.ico"
+
+1 24 "app.manifest"
+
+1 VERSIONINFO
+FILEVERSION 0,1,0,0
+PRODUCTVERSION 0,1,0,0
+FILEOS 0x40004
+FILETYPE 0x1
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "Sideroute contributors"
+            VALUE "FileDescription", "Sideroute: per-app VPN"
+            VALUE "FileVersion", "0.1.0"
+            VALUE "InternalName", "Sideroute"
+            VALUE "LegalCopyright", "MIT OR Apache-2.0"
+            VALUE "OriginalFilename", "Sideroute.exe"
+            VALUE "ProductName", "Sideroute"
+            VALUE "ProductVersion", "0.1.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
